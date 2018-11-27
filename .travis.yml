@@ -1,0 +1,37 @@
+env:
+  global:
+   # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
+   #   via the "travis encrypt" command using the project repo's public key
+   - secure: "FpAoZQzkB0LYmsvnc5E6s+R9ZkGtmvVTss0Rr94eP94ebe9Jal/TdHbwXv7YOFb0KHRm0lUlu5h9PwCzBw/GEmkCZ7qf8uXeX7k+7DXR380OeK2fy+1ZosG7rTFy9aP+MYQPxOfAnLTtGIwAM6go7xuAwzLmn8apQF6tb40DAEhaLVPaFBMfrxwPF3Y2cwnEKsZ2UaozP4LeN/1Y/zAwQ3vNI/jSYIX7hZGf+YuGL8ORbl5wERt+qCLBpBJQJ4vNJYc7vHtnbZ7bVPa/+gbWAt+KVMoZ4dbI/hvaNl0RCHdtltdCRBV7uw4aTbjGStt6usbGBi/iSFeLtb20PE6Us5XqFgZyt58SSHt96UCEtP+cmNozAQ/ccYMVfbNL55b3vEJs729yn5dOmS7RGR0E6mHymDb1Bi7CEWpf3D3Op960T716wjOWGnZbVzessbRuAZmRxlSbS5fCBRdm6Rf3RelrZSSOLw2v5ogQAFKbszfcMJMTbbZOCJkp2Sate/DJwBdoop2z9Fcy9BvLv90SvUoomv8QHxGxsfqBkX0n7igDBfutLSgSiS+jj5hFc5UV1B/JCyUz4kcMwzwa0Ikj+y3LFwuhj0YRwxBgogtuypDjmjhUFvRSNyLiz/t3PP6H0MlBSdAdwR7ued7h+Vr13dDwUzPeAPPlTTsrjQmPvJQ="
+
+
+addons:
+  coverity_scan:
+    project:
+      name: "Hopetech/virglrenderer"
+      description: "VirGL virtual OpenGL renderer"
+    notification_email: tournier.elie@gmail.com
+    build_command_prepend: "./autogen.sh"
+    build_command: "make -j2"
+    branch_pattern: coverity_scan
+
+language: c
+
+branches:
+    only:
+      - coverity_scan
+
+os:
+   - linux
+
+dist: xenial
+
+install:
+   - sudo apt-get update
+   - sudo apt-get install -y libepoxy-dev
+   - sudo apt-get install -y mesa-utils-extra
+   - sudo apt-get install -y coreutils libegl1-mesa-dev libgl1-mesa-dev libgbm-dev libx11-dev
+
+script:
+   - ./autogen.sh
+   - make -j2
