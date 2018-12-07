@@ -2,14 +2,15 @@ env:
   global:
    # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
    #   via the "travis encrypt" command using the project repo's public key
+   - secure: "WKPH+m0LzyBqjcgFr9ExEJXaGI9KlKxp2Syhhaob6C1nLDTPM1456HGO1sdDW+GqmLRs8QP74Y+BV51iw0FUan7j5teUaaasDw1m7DvCQTL5DghZlr7pcmEtLrZqVykp7yNy5ywY8BHFBft060lAVnWbvOM1m/O7Ep0/Ieu2L/H7JMvKO4IMoLr6+kjXISa4JgDcXEudVVPKGAPadk79G3uyRpOBo+wKw+cmfvcmX1FQbSHjKnpRHo9OkHV3nUihzPKFAdI+tlLr0vGG7YktD47a+zuVjxV8D/fTo3o9SPW+4ipuvPw/e5BDoACGouabHi4dh6MMlMqEQ6OWZOYEa8rdEr3XHMsm+uWnhU5xshLtKNdLPT3PnrdWzm5uO8SuJrXARaq2CL2a6bpBAucvFG4xZGfHosmlxiP4RIBZkxNK7Rh/ZWHcniy+bB8e99vcUzyF+vCKReTYAis3wGqlzn0cMRSCkDE9aZqoXk3B+Owl6dMl6tjdHvM6NgVFeVkDam4fL9ufSswZn++m7A4F+DM/2edfUrhu5C5F76PbGFP/oyK2CXo8pua0ofLnrSJmMbbSJOXSizeV4lg4zlXepvb5N9/lMAxQKSGUNl9G6yFJXNEyTSxkmFuzoTKc4kDlmQ8MhkarJ63f7bKYa3qOrs7iKjMkxWxn45A6tWMjlXQ="
 
 
 addons:
   coverity_scan:
     project:
-      #name: "Hopetech/virglrenderer"
+      name: "evelikov/virglrenderer"
       description: "VirGL virtual OpenGL renderer"
-    notification_email: tournier.elie@gmail.com
+    notification_email: emil.l.velikov@gmail.com
     build_command_prepend: "./autogen.sh"
     build_command: "make -j2"
     branch_pattern: coverity_scan
