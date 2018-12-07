@@ -26,8 +26,6 @@ branches:
 os:
    - linux
 
-dist: xenial
-
 install:
    - sudo apt-get update
    - sudo apt-get install -y libepoxy-dev
